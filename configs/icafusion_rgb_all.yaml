@@ -1,0 +1,33 @@
+seed: 42
+model:
+  base_channels: 16
+  modules: {mgdc: true, legm: true, hfp: true, ffcm: true}
+  residual_scale: 0.01
+  hfp_ratio: [0.25, 0.25]
+data:
+  root: /root/autodl-tmp
+  train_split: train
+  ir_dir: ir
+  vis_dir: vi
+  val_fraction: 0.1
+  train_list: null
+  val_list: null
+train:
+  epochs: 40
+  crop_size: 128
+  batch_size: 4
+  repeats: 4
+  workers: 4
+  g_lr: 0.0001
+  d_lr: 0.0004
+  betas: [0.9, 0.999]
+  d_steps: 2
+  discriminator_tanh: true
+  save_every_steps: 250
+  log_every_steps: 20
+loss:
+  visible_l1: 1.0
+  color: 1.0
+  adv_ir: 1.0
+  adv_vis: 1.0
+  gp: 10.0
